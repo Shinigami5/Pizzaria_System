@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    outline: none;
+}
+
+.inicio{
+    background-color: rgb(97, 50, 50);
+    height: 50px;
+    width: 100%;
+}
+
+.central{
+    background-color: #353535;
+    width: 100%;
+    min-height: 800px;
+    overflow: auto;
+    color: white;
+
+}
+
+.head {
+    margin: 1%;
+    height: 100px;
+    text-align: center;
+}
+
+.headLeft {
+    float: left;
+}
+
+.headRight {
+    float: right;
+    display: flex;
+}
+
+.head button {
+    outline: none;
+    color: white;
+    margin: 4px 10px 0px;
+    background-color: #05044c;
+    border-color: #05044c;
+}
+
+.head input {
+    background-color: #8c4407;
+    border-color: #8c4407;
+    outline: none;
+    color: white;
+}
+
+.bloco{
+    width: auto;
+    min-height: 100px;
+    margin: 0% 10%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #227b63;
+    
+}
+
+.InBloco{
+    background-color:#6b0000;
+    padding: 10px;
+    display: flex;
+}
+
+.pizza {
+    padding: 20px 20px 0px;
+}
+
+.blocoPizza {
+    margin: 10px;
+    width: 180px;
+    display: inline-block;
+}
+
+.bebida {
+    padding: 20px;
+}
+
+.blocoBebida {
+    width: 220px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.total {
+    padding: 10px;
+    background-color: #2d0b0b;
+}
+
+.total button {
+    width: 70px;
+    height: 50px;
+    float: right;
+    margin: 4px 10px 0px;
+    background-color: #4c3d3d;
+    outline: none;
+    font-size: 16px;
+    color: white;
+}
+
+.total p {
+    margin: 20px 20px;
+/*  width: 200px;   */
+    display: inline-block;
+}
+
+.pra{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    list-style-type: none;
+}
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+li:hover {
+    background-color: #ff0000;
+}

@@ -1,0 +1,27 @@
+
+create table produto(
+id		int		not null auto_increment,
+tipo	varchar(40),
+nome	varchar(70),
+preço	decimal(5,2),
+primary key(id)
+);
+
+create table itemProduto(
+keyproduto	int not null,
+keyPedido	int not null
+);
+
+create table cliente(
+id		int		not null auto_increment,
+nome	varchar(70),
+tele	varchar(11),
+primary key(id)
+);
+
+create table ordem_pedido(
+id		int		not null auto_increment,
+dataPedido	date,
+fk_cliente int,
+primary key(id)
+);

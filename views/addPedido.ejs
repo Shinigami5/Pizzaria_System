@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addPedido</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="addPedido.css">
+</head>
+<body>
+    <script type="module" src="./addPedido.js"></script>
+    <%- include('./modulos/inicio.ejs') %>
+    <div class="Pedido">
+        <h1>Add Pedido</h1>
+        <form action="./addPedido" method="post" >
+            <label for="">data</label>
+            <input type="date" defaultValue="20-01-20" name="data" id=""> <br>
+            <label for="client">cliente</label>
+            <select class="sel" name="cliente" id="">
+                <% if(clientes){ %>
+                <% for(let i=0; i < clientes.length; i++){ %>
+                    <option value='<%= clientes[i] %>' > <%- clientes[i] %> </option>
+                <% }} %>
+            </select>
+
+            <label for=''>pedido feito</label>
+            <select class="sel" name="feito" id="">
+                    <option value="nao">nao</option>
+                    <option value="sim">sim</option>
+            </select>
+
+            <p id="titleProduts">os produtos</p>
+            <div class="pro">
+                <select id="seletor">
+                    <% if(produtos){  %>
+                    <% for(let i=0; i < produtos.length; i++) { %>
+                    <% let t = produtos[i];    %>
+                        <option value='<%= t %>' > <%- t %> </option>
+                    <% }} %>
+                </select>
+                <button type="button" id="b1">add</button>
+                <button type="button" id="b2">remove</button>
+                <div class="produts"></div>
+            </div>
+            <input type="button" id='enviar' value="enviar">
+        </form>
+    </div>
+
+    
+</body>
+</html>
+
+
+

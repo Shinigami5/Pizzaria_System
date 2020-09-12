@@ -1,0 +1,30 @@
+<%- include('./modulos/head.ejs')   %>
+<body>
+    <%- include('./modulos/inicio.ejs') %>
+    <div class="central">
+        <div class="head">
+            <h2>Pizzaria del gosto</h2>
+            <div class="headLeft">
+               <a href="/addPedido"><button>add pedido</button></a>
+            </div>
+            <div class="headRight">
+                <p>mostra pedidos de</p>
+                <input type="date" name="" id="">
+                <p>até</p>
+                <input type="date" name="" id="">
+                <button id="bdata">aplicar</button>
+            </div>
+            
+        </div>
+
+        
+    </div>
+
+    <% if (dados) { %>
+        <script>
+           dados = JSON.parse('<%- JSON.stringify(dados) %>');
+        </script>
+     <% } %>
+    <script src="./home.js"></script>
+</body>
+</html>
