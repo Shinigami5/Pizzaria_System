@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    outline: none;
+}
+
+.inicio{
+    background-color: rgb(97, 50, 50);
+    height: 50px;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+li:hover {
+    background-color: #ff0000;
+}
