@@ -1,0 +1,132 @@
+
+body {
+    background-color: #ff9900;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+
+
+
+
+button {
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: green;
+}
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 10px;
+}
+
+.mainHead {
+    width: auto;
+    padding: 20px;
+    background-color: #0e7a88;
+}
+
+.oculto {
+    display: none;
+}
+
+.Add {
+    color: white;
+    width: 250px;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid
+}
+
+.Add input {
+    margin-top: 2px;
+}
+
+.Add label {
+    margin-top: 2px;
+}
+
+
+
+.blocoProduto {
+    font-family: sans-serif;
+    width: 300px;
+    height: auto;
+    background-color: #399fbd;
+    border: 1px solid black;
+    margin: 20px auto;
+    padding: 5px;
+    color: white;
+}
+
+
+.TextCenter {
+    text-align: center;
+}
+
+.blocoProduto .campo {
+    display: inline-block;
+    margin: 10px 0px 0px 0px;
+    width: 190px;
+}
+
+.blocoProduto button {
+    margin: 10px 33px 5px 33px;
+    background-color: #1b18e8;
+    width: 80px;
+    height: 30px;
+}
+
+.blocoProduto  button:active {
+    background-color: #090779;
+}
+
+
+#cima {
+    padding-bottom: 5px;
+}
+
+#btnMain {
+    margin: 0px 0px 0px 0px;
+    width: 170px;
+    height: 40px;
+}
+
+#btnMain:active {
+    background-color: rgb(1, 37, 1);
+}
+
+#btnSubmit {
+    margin: 5px 0px 0px 169px;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: green;
+    padding: 8px;
+    width: 80px;
+}
+
+#NumClient {
+    font-family: inherit;
+    font-size: 20px;
+    color: white;
+}

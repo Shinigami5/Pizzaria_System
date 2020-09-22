@@ -13,6 +13,7 @@ router.get('/addPedido', pedido.get);
 router.post('/addPedido', pedido.post)
 
 router.get('/cliente', cliente.get);
+router.get('/produto', produto.get);
 
 router.delete('/produto', produto.delete);
 router.put('/produto/atualiza', produto.put);

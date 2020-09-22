@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes</title>
+    <title>Produtos</title>
     <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="css/cliente.css">
-    <script src="js/Cliente.js"></script>
+    <link rel="stylesheet" href="css/produto.css">
+    <script src="js/Produto.js"></script>
 </head>
 <body>
     <%- include('./modulos/inicio.ejs') %>
     <div class="mainHead">
-        <button id="btnMain" onclick="AddNewClient()">Adicionar Novo Cliente</button>
-        <p id="NumClient" class="right">Clientes Cadastrados: 17</p>
+        <button id="btnMain" onclick="AddNewProduto()">Adicionar Novo Produto</button>
+        <p id="NumClient" class="right">Produtos Cadastrados: 17</p>
         <div id="fomulario" class="Add oculto">
             <form  action="" method="post">
                 <label class="left" for="">Nome:    </label>
                 <input class="right" type="text">
-                <br>
-                <label class="left" for="">Telefone: </label>
+                <label class="left" for="">Tipo: </label>
+                <input class="right" type="text">
+                <label class="left" for="">Preco: </label>
                 <input class="right" type="number">
                 <input id="btnSubmit" type="submit" value="Eviar">
             </form>
@@ -26,13 +27,13 @@
     </div>
     <div class="main">
 
-        <div id="1" class="blocoCliente TextCenter">
+        <div id="1" class="blocoProduto TextCenter">
             <p id="cima">id: xx</p>
             <hr>
             <p class="campo">nome: nomelongoAlin</p>
-            <p class="campo">telefone: xxxxxxxxxxx</p>
-            <button onclick="editClient()">editar</button>
-            <button onclick="deleteClient()">excluir</button>
+            <p class="campo">Tipo: maderia de ecalipo</p>
+            <button onclick="editProduto()">editar</button>
+            <button onclick="deleteProduto()">excluir</button>
         </div>
     </div>
 </body>
