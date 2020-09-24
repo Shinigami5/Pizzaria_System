@@ -12,7 +12,14 @@
     <%- include('./modulos/inicio.ejs') %>
     <div class="mainHead">
         <button id="btnMain" onclick="AddNewClient()">Adicionar Novo Cliente</button>
-        <p id="NumClient" class="right">Clientes Cadastrados: 17</p>
+        <% if(clientes){  %>
+        <p id="NumClient" class="right">Clientes Cadastrados: <%= clientes.length %></p>
+        <% }else{  %>
+        <p id="NumClient" class="right">Clientes Cadastrados: 0</p>
+        <% }       %>
+
+
+
         <div id="fomulario" class="Add oculto">
             <form  action="" method="post">
                 <label class="left" for="">Nome:    </label>
@@ -20,20 +27,25 @@
                 <br>
                 <label class="left" for="">Telefone: </label>
                 <input class="right" type="number">
-                <input id="btnSubmit" type="submit" value="Eviar">
+                <input id="btnSubmit" type="button" value="Eviar" onclick="enviar()">
             </form>
         </div>
     </div>
     <div class="main">
 
-        <div id="1" class="blocoCliente TextCenter">
-            <p id="cima">id: xx</p>
-            <hr>
-            <p class="campo">nome: nomelongoAlin</p>
-            <p class="campo">telefone: xxxxxxxxxxx</p>
-            <button onclick="editClient()">editar</button>
-            <button onclick="deleteClient()">excluir</button>
-        </div>
+        <% if(clientes){ %>
+        <%    for(let i=0; i < clientes.length; i++){  %>
+            <div id="<%= clientes[i].id%>" class="blocoCliente TextCenter">
+                <p id="cima">id: <%= clientes[i].id %></p>
+                <hr>
+                <p class="campo">nome: <%= clientes[i].nome %></p>
+                <p class="campo">telefone: <%= clientes[i].tele %></p>
+                <button onclick="editClient()">editar</button>
+                <button onclick="deleteClient()">excluir</button>
+            </div>
+        <% }}  %>
+
+
     </div>
 </body>
 </html>

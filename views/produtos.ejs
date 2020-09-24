@@ -12,29 +12,39 @@
     <%- include('./modulos/inicio.ejs') %>
     <div class="mainHead">
         <button id="btnMain" onclick="AddNewProduto()">Adicionar Novo Produto</button>
-        <p id="NumClient" class="right">Produtos Cadastrados: 17</p>
+        <% if(produtos){  %>
+        <p id="NumClient" class="right">Produtos Cadastrados: <%= produtos.length %></p>
+        <% }else{  %>
+        <p id="NumClient" class="right">Produtos Cadastrados: 0</p>
+        <% }       %>
         <div id="fomulario" class="Add oculto">
-            <form  action="" method="post">
-                <label class="left" for="">Nome:    </label>
-                <input class="right" type="text">
-                <label class="left" for="">Tipo: </label>
-                <input class="right" type="text">
-                <label class="left" for="">Preco: </label>
-                <input class="right" type="number">
-                <input id="btnSubmit" type="submit" value="Eviar">
+            <form  action="/produto" method="post">
+                <label class="left" for="nome">Nome: </label>
+                <input class="right" type="text" id="nome">
+                <label class="left" for="tipo">Tipo: </label>
+                <input class="right" type="text" id="tipo">
+                <label class="left" for="price">Preco: </label>
+                <input class="right" type="number" id="price">
+                <input id="btnSubmit" type="button" value="Eviar" onclick="enviar()">
             </form>
         </div>
     </div>
     <div class="main">
-
-        <div id="1" class="blocoProduto TextCenter">
-            <p id="cima">id: xx</p>
-            <hr>
-            <p class="campo">nome: nomelongoAlin</p>
-            <p class="campo">Tipo: maderia de ecalipo</p>
-            <button onclick="editProduto()">editar</button>
-            <button onclick="deleteProduto()">excluir</button>
-        </div>
+        <% if(produtos){ %>
+        <%   for(let i=0; i < produtos.length; i++){                       %>
+            <div id="<%= produtos[i].id %>" class="blocoProduto TextCenter">
+                <p id="cima">id: <%= produtos[i].id %></p>
+                <hr>
+                <p class="campo">nome: <%- produtos[i].nome %></p>
+                <p class="campo">tipo: <%- produtos[i].tipo  %></p>
+                <p class="campo">preço: R$<%- Number(produtos[i].price).toFixed(2) %></p>
+                <button onclick="editProduto()">editar</button>
+                <button onclick="deleteProduto()">excluir</button>
+            </div>
+        <% }   %>
+        <% }else{  %>
+            <p>produto é null</p>
+        <% }       %>
     </div>
 </body>
 </html>

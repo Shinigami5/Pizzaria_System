@@ -7,8 +7,8 @@ function criarConexao(){
         const connection = mysql.createConnection({
             host: 'localhost',
             user: 'root',
-            password: '25@wnj',
-            database: 'db_pizza'
+            password: 'senha',
+            database: 'database'
         });
         return connection;
     } catch (error) {
