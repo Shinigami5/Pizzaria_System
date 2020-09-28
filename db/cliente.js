@@ -11,6 +11,14 @@ const getAllCliente = async () => {
     return clientesPromise;
 }
 
+const addClient = async (nome, tele) => {
+    const db = criarConexao();
+    const sql = `insert into cliente(nome, tele) value ('${nome}', '${tele}')`;
+
+    const addPromise = await consulta(sql, db);
+    db.end();
+}
+
 /*
 const dado = getAllCliente();
 dado.then(res => {
@@ -25,4 +33,4 @@ dado.then(res => {
 })
 */
 
-module.exports = { getAllCliente };
+module.exports = { getAllCliente, addClient };

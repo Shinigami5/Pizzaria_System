@@ -1,6 +1,6 @@
 
 .central{
-    background-color: #353535;
+    background-color: #ff9900;
     width: 100%;
     min-height: 800px;
     overflow: auto;
@@ -9,9 +9,10 @@
 }
 
 .head {
-    margin: 1%;
+    padding: 1%;
     height: 100px;
     text-align: center;
+    background-color: #0e7a88;
 }
 
 .headLeft {
@@ -27,7 +28,7 @@
     outline: none;
     color: white;
     margin: 4px 10px 0px;
-    background-color: #05044c;
+    background-color: green;
     border-color: #05044c;
 }
 
@@ -44,12 +45,12 @@
     margin: 0% 10%;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #227b63;
+    background-color: #0e7a88;
     
 }
 
 .InBloco{
-    background-color:#6b0000;
+    background-color: #399fbd;
     padding: 10px;
     display: flex;
 }
@@ -76,7 +77,7 @@
 
 .total {
     padding: 10px;
-    background-color: #2d0b0b;
+    background-color: #399fbd;
 }
 
 .total button {
@@ -84,7 +85,7 @@
     height: 50px;
     float: right;
     margin: 4px 10px 0px;
-    background-color: #4c3d3d;
+    background-color: green;
     outline: none;
     font-size: 16px;
     color: white;

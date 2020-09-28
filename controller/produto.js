@@ -1,5 +1,5 @@
 const { setDone, deletePedido } = require('../db/db');
-const { getAllProduto } = require('../db/produto');
+const { getAllProduto, addProduto } = require('../db/produto');
 
 
 exports.get = (req, res) => {
@@ -31,11 +31,19 @@ exports.delete = (req, res) => {
 }
 
 exports.post = (req, res) => {
-    //console.log("body ", req.body);
-    console.log("query produto", req.query);
+    console.log("produto recebido", req.query);
+    const nome = req.query.nome;
+    const tipo = req.query.tipo;
+    const price = req.query['preço'];
+    
+    if(nome === undefined || tipo === undefined || price === undefined){
+        res.json({ meg: 'alguns dados estao em banco, por favor envios de novo' });
+    }else{
+        addProduto(nome, tipo, price);
+        res.json({ meg: 'novo Produto recebido' });
+    }
 
-    //console.log(req.params);
-    res.json({ meg: 'novo Produto recebido' });
+    
 
 }
 

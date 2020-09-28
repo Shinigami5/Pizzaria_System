@@ -1,14 +1,15 @@
 const mysql = require('mysql');
-const { pedido, produto } = require('../classBack-end')
+const { pedido, produto } = require('../classBack-end');
+const dateBase = require('../database.json')
 
 
 function criarConexao(){
     try {
         const connection = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: 'senha',
-            database: 'database'
+            host: dateBase.host,
+            user: dateBase.user,
+            password: dateBase.senha,
+            database: dateBase.datebase
         });
         return connection;
     } catch (error) {
