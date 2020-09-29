@@ -1,4 +1,4 @@
-const { getProdutos, getCliente } = require('../db/db');
+const { getProdutos, getCliente, deletePedido } = require('../db/db');
 const { salvaPedido } = require('../db/salvaPedido');
 
 exports.get = (req, res) => {
@@ -24,6 +24,13 @@ exports.get = (req, res) => {
 }
 
 exports.post = (req, res) => {
+    console.log(req.body);
     salvaPedido(req.body);
     res.redirect('./home');
+}
+
+exports.delete = (req, res) => {
+    //console.log('executou ' + req.query.id);
+    deletePedido(req.query.id);
+    res.send(`item ${req.query.id} deletado com sucesso`);
 }

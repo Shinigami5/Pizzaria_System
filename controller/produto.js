@@ -1,5 +1,5 @@
-const { setDone, deletePedido } = require('../db/db');
-const { getAllProduto, addProduto } = require('../db/produto');
+const { setDone } = require('../db/db');
+const { getAllProduto, addProduto, removeProduto } = require('../db/produto');
 
 
 exports.get = (req, res) => {
@@ -24,11 +24,6 @@ exports.get = (req, res) => {
 
 }
 
-exports.delete = (req, res) => {
-    //console.log('executou ' + req.query.id);
-    deletePedido(req.query.id);
-    res.send(`item ${req.query.id} deletado com sucesso`);
-}
 
 exports.post = (req, res) => {
     console.log("produto recebido", req.query);
@@ -51,4 +46,24 @@ exports.put = (req, res) => {
     //console.log('recebido: ' + req.query.id + ' ' + req.query.status);
     setDone(req.query.id, req.query.status);
     res.send('sucess');
+}
+
+exports.delete = (req, res) => {
+    const id = Number(req.query.id);
+    console.log(id);
+
+    if(Number.isInteger(id) && id !== undefined){
+        const pro = removeProduto(id);
+        pro.then(result => {
+            console.log(result.sucess);
+            if(result.sucess == true){
+                res.json({ meg: result.meg });
+            }else{
+                res.json({ erro: result.meg });
+            }
+        })
+    }else{
+        res.json({ erro: 'id é null' });
+    }
+
 }

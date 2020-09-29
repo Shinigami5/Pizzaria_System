@@ -110,7 +110,7 @@ function calTotal(dados){
 }
 
 function excluirItem(){
-    fetch(`./produto?id=${this.id}`, { method: 'delete' }).then((meg) => {
+    fetch(`./pedido/delete?id=${this.id}`, { method: 'delete' }).then((meg) => {
         destroyBloco(this.id);
         console.log(meg);
     })

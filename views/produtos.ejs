@@ -38,8 +38,8 @@
                 <p class="campo">nome: <%- produtos[i].nome %></p>
                 <p class="campo">tipo: <%- produtos[i].tipo  %></p>
                 <p class="campo">preço: R$<%- Number(produtos[i].price).toFixed(2) %></p>
-                <button onclick="editProduto()">editar</button>
-                <button onclick="deleteProduto()">excluir</button>
+                <button onclick="editProduto(event)">editar</button>
+                <button onclick="deleteProduto(event)">excluir</button>
             </div>
         <% }   %>
         <% }else{  %>

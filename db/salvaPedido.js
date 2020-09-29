@@ -93,6 +93,7 @@ function salvaPedido(pedido){
         p1.then((id) => {
             //console.log('line 292: ', id);
             insereItemDePedido(id, pedido.produto, con);
+            con.end();
         }).catch((erro) => { 
             console.log(erro);
             con.end();

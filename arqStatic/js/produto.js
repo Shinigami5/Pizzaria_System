@@ -42,6 +42,14 @@ function editProduto(){
     console.log('editou');
 }
 
-function deleteProduto(){
-    console.log('excluir');
+function deleteProduto(event){
+    const id = event.target.parentElement.id;
+    fetch(`./produto?id=${id}`, { method: 'delete' }).then(res => {
+        if(res.status === 200){
+            res.json().then(j => { console.log(j); })
+        }else{
+            console.log(res);
+        }
+    })
+    event.target.parentElement.remove();
 }

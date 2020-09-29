@@ -19,6 +19,33 @@ const addProduto = async (nome, tipo, price) => {
     db.end();
 }
 
+const removeProduto = async (id) => {
+    const sql = `select keyproduto from itemProduto where keyproduto = ${id};`;
+    const db = criarConexao();
+    let resultado = { meg: '', sucess: false };
+
+    const p = consulta(sql, db);
+
+    await p.then(results => {
+        console.log('product', results);
+        if(results.length === 0){
+            //console.log('nenhum pedido possuier esse produto');
+            consulta(`delete from produto where id = ${id};`, db);
+            resultado.meg = `produto ${id} removido com sucesso`;
+            resultado.sucess = true;
+        }else{
+            //console.log('todos os pedido com esse produto devem ser deletados para excluir esse produto');
+            resultado.meg = "todos os pedido com esse produto devem ser deletados para excluir esse produto";
+        }
+    })
+
+    db.end()
+    return new Promise((resolve, reject) => {
+        resolve(resultado);
+        reject('erro');
+    })
+}
+
 /*
 const dado = getAllProduto();
 dado.then(res => {
@@ -32,4 +59,4 @@ dado.then(res => {
 })
 */
 
-module.exports = { getAllProduto, addProduto };
+module.exports = { getAllProduto, addProduto, removeProduto };
