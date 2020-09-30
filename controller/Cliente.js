@@ -1,4 +1,4 @@
-const { getAllCliente, addClient } = require('../db/cliente')
+const { getAllCliente, addClient, removeClient } = require('../db/cliente')
 
 exports.get = (req, res) => {
     const promesa = getAllCliente();
@@ -46,5 +46,22 @@ exports.post = (req, res) => {
     if(!erro){
         addClient(nome, tele);
         res.json({ meg: 'novo Cliente recebido' });
+    }
+}
+
+exports.delete = (req, res) => {
+    const id = Number(req.query.id);
+
+    if(Number.isInteger(id) && id > 0){
+        const pro = removeClient(id);
+        pro.then(result => {
+            if(result.sucess == true){
+                res.json({ meg: result.meg });
+            }else{
+                res.json({ erro: result.meg });
+            }
+        })
+    }else{
+        res.json({ erro: 'id é nulo' });
     }
 }

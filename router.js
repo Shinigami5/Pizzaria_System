@@ -15,6 +15,7 @@ router.delete('/pedido/delete', pedido.delete);  // deleta pedido
 
 router.get('/cliente', cliente.get);
 router.post('/cliente', cliente.post);
+router.delete('/cliente', cliente.delete);
 
 router.get('/produto', produto.get);
 router.post('/produto', produto.post);

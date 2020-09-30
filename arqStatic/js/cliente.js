@@ -40,6 +40,22 @@ function editClient(){
     console.log('editou');
 }
 
-function deleteClient(){
-    console.log('excluir');
+function deleteClient(event){
+    const id = event.target.parentElement.id;
+    fetch(`./cliente?id=${id}`, { method: 'delete' }).then(res => {
+        if(res.status === 200){
+            res.json().then(obj => { 
+                //console.log(obj);
+                if(obj.meg){
+                    console.log(obj.meg);
+                    event.target.parentElement.remove();
+                }
+                if(obj.erro){
+                    console.log(obj.erro);
+                }
+            })
+        }else{
+            console.log(res);
+        }
+    })
 }

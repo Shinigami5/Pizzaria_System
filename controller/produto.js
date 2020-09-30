@@ -63,7 +63,7 @@ exports.delete = (req, res) => {
             }
         })
     }else{
-        res.json({ erro: 'id é null' });
+        res.json({ erro: 'id é nulo' });
     }
 
 }

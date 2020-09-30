@@ -46,10 +46,17 @@ function deleteProduto(event){
     const id = event.target.parentElement.id;
     fetch(`./produto?id=${id}`, { method: 'delete' }).then(res => {
         if(res.status === 200){
-            res.json().then(j => { console.log(j); })
+            res.json().then(obj => {
+                 if(obj.meg){
+                    console.log(obj.meg);
+                    event.target.parentElement.remove();
+                }
+                if(obj.erro){
+                    console.log(obj.erro);
+                }
+            })
         }else{
             console.log(res);
         }
     })
-    event.target.parentElement.remove();
 }
