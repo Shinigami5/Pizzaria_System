@@ -36,8 +36,9 @@ function AddNewClient(){
     }
 }
 
-function editClient(){
-    console.log('editou');
+function editClient(event){
+    const id = event.target.id;
+    console.log('id: '+ id);
 }
 
 function deleteClient(event){

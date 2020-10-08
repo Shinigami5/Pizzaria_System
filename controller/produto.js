@@ -1,5 +1,5 @@
 const { setDone } = require('../db/db');
-const { getAllProduto, addProduto, removeProduto } = require('../db/produto');
+const { getAllProduto, addProduto, removeProduto, updateProduct } = require('../db/produto');
 
 
 exports.get = (req, res) => {
@@ -65,5 +65,31 @@ exports.delete = (req, res) => {
     }else{
         res.json({ erro: 'id é nulo' });
     }
+
+}
+
+exports.editar = (req, res) => {
+    //console.log(req.query);
+    
+    const obj =  { name: req.query.nome, type: req.query.tipo, price: req.query.price, id: req.query.id };
+    res.render('editaProduto', obj);
+}
+
+exports.update = (req, res) => {
+    console.log('query',  req.query);
+    const nome = req.query.nome;
+    const tipo = req.query.tipo;
+    const price = req.query.price;
+    const id = req.query.id;
+
+    const pro = updateProduct(id, nome, tipo, price);
+    pro.then(results => {
+        if(results.sucess){
+            res.json({ meg: results.meg, status: true })
+        }else{
+            res.json({ meg: results.meg, status: false })
+
+        }
+    });
 
 }

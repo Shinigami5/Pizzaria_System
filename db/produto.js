@@ -46,6 +46,35 @@ const removeProduto = async (id) => {
     })
 }
 
+const updateProduct = async (id, name, type, price) => {
+    if(!id){
+        return new Promise((resolve) => {
+            resolve({ meg: 'id esta como undefined', sucess: false });
+        });
+    }
+    const sql = `update produto set tipo = '${type}', nome = '${name}', preço = '${price}' where id = ${id};`;
+    const db = criarConexao();
+    let resultado = { meg: '', sucess: false };
+
+    const ud = consulta(sql, db);
+
+    await ud.then(res => {
+        console.log(res);
+        resultado.meg = `item ${id} atualizado`;
+        resultado.sucess = true;
+    }).catch(erro => {
+        console.log(erro);
+        resultado.meg = `ocoreu um erro ao atualizar item`;
+        resultado.sucess = false;
+    })
+    db.end();
+
+    return new Promise((resolve) => {
+        resolve(resultado);
+    })
+
+}
+
 /*
 const dado = getAllProduto();
 dado.then(res => {
@@ -59,4 +88,4 @@ dado.then(res => {
 })
 */
 
-module.exports = { getAllProduto, addProduto, removeProduto };
+module.exports = { getAllProduto, addProduto, removeProduto, updateProduct };

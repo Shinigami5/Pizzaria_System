@@ -1,5 +1,6 @@
 
 
+
 function enviar(event){
     const e = document.querySelectorAll('input');
     const nome = e[0].value;
@@ -38,8 +39,33 @@ function AddNewProduto(){
     }
 }
 
-function editProduto(){
-    console.log('editou');
+function editProduto(event){
+    const e = event.target.parentElement;
+    const id = e.id;
+    const Ps = e.querySelectorAll('p');
+    let nome = Ps[1].innerText;
+    let tipo = Ps[2].innerText;
+    let price = Ps[3].innerText;
+
+    nome = nome.replace('nome: ', '');
+    tipo = tipo.replace('tipo: ', '');
+    price = price.replace('preço: R$', '');
+
+    fetch(`/produto/edita?nome=${nome}&tipo=${tipo}&price=${price}&id=${id}`, { method: 'get' }).then(res => {
+        if(res.status === 200){
+            console.log(res);
+            res.text().then(tex => {
+                document.open();
+                document.write(tex);
+            })
+            
+        }else{
+            console.error('erro: requisiçao retorno com status ' + res.status);
+            console.log(res);
+        }
+    })
+
+
 }
 
 function deleteProduto(event){

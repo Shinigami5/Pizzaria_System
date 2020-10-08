@@ -16,12 +16,16 @@ router.delete('/pedido/delete', pedido.delete);  // deleta pedido
 router.get('/cliente', cliente.get);
 router.post('/cliente', cliente.post);
 router.delete('/cliente', cliente.delete);
+router.get('/cliente/edita', cliente.editar);
 
 router.get('/produto', produto.get);
 router.post('/produto', produto.post);
 router.delete('/produto', produto.delete);
+router.get('/produto/edita', produto.editar);
 
-router.put('/produto/atualiza', produto.put);
+router.post('/produto/atualizar', produto.update); // atualizar um produto
+
+router.put('/produto/atualiza', produto.put); // edita o estado do produto
 
 router.get('/teste', teste.get);
 router.get('/teste/get', teste.get2);

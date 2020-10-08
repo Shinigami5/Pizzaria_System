@@ -29,7 +29,7 @@ const removeClient = async (id) => {
 
     await client.then(res => {
         if(res.length === 0){
-            console.log(`delete from cliente where = ${id}`);
+            //console.log(`delete from cliente where = ${id}`);
             consulta(`delete from cliente where id = ${id}`, db);
             resultado.meg = `cliente ${id} removido com sucesso`;
             resultado.sucess = true;

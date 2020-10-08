@@ -65,3 +65,7 @@ exports.delete = (req, res) => {
         res.json({ erro: 'id é nulo' });
     }
 }
+
+exports.editar = (req, res) => {
+    res.send('todo');
+}
