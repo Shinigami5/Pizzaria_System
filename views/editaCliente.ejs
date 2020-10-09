@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditaCliente</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/css/edita.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crete+Round&display=swap" rel="stylesheet">
+    <script src="/js/editar.js"></script>
+</head>
+<body>
+    <%- include('./modulos/inicio.ejs')  %>
+    <% if(id){ %>
+        <div class="container" id="<%= id %>">
+    <% }else{ %>
+        <div class="container" id="0">
+    <% } %>
+        
+        <% if(id){ %>
+        <h1 class="titulo">atualizar cliente <%= id %> </h1>
+        <% }else{ %>
+        <h1 class="titulo">sem cliente </h1>
+        <% } %>
+
+        <div class="editeBloco">
+            <label class="textoFomadado" for="nome">nome: 
+                <input class="textoFomadado" type="text" name="nome" id="nome" value="<%= name %>">
+            </label>
+            <label class="textoFomadado" for="tele">telefone:  
+                <input class="textoFomadado" type="number" name="tele" id="tele" value="<%= tele %>">
+            </label>
+        </div>
+        <button class="btnSubmit" onclick="updateClient()">atualizar</button>
+    </div>
+</body>

@@ -18,6 +18,8 @@ router.post('/cliente', cliente.post);
 router.delete('/cliente', cliente.delete);
 router.get('/cliente/edita', cliente.editar);
 
+router.post('/cliente/atualizar', cliente.update);
+
 router.get('/produto', produto.get);
 router.post('/produto', produto.post);
 router.delete('/produto', produto.delete);

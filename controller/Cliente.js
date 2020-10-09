@@ -1,4 +1,4 @@
-const { getAllCliente, addClient, removeClient } = require('../db/cliente')
+const { getAllCliente, addClient, removeClient, updateClient } = require('../db/cliente')
 
 exports.get = (req, res) => {
     const promesa = getAllCliente();
@@ -67,5 +67,32 @@ exports.delete = (req, res) => {
 }
 
 exports.editar = (req, res) => {
-    res.send('todo');
+    const obj =  { name: req.query.nome, tele: req.query.tele, id: req.query.id };
+    //console.log(obj);
+    res.render('editaCliente', obj);
+}
+
+exports.update = (req, res) => {
+    //console.log('query',  req.query);
+    const nome = req.query.nome;
+    const tele = req.query.tele;
+    const id = req.query.id;
+
+    if(!(nome.length <= 70)){
+        res.json({ meg: 'o novo nome é muito longo', status: false });
+        return;
+    }
+    if( !(tele.length >= 8 && tele.length <= 11) ){
+        res.json({ meg: 'telefone precisar ter entre 8 a 11 digitos', status: false });
+        return;
+    }
+
+    const pro = updateClient(nome, tele, id);
+    pro.then(results => {
+        if(results.sucess){
+            res.json({ meg: results.meg, status: true })
+        }else{
+            res.json({ meg: results.meg, status: false })
+        }
+    });
 }

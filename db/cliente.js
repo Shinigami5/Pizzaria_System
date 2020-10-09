@@ -44,6 +44,37 @@ const removeClient = async (id) => {
     })
 }
 
+const updateClient = async (nome, tele, id) => {
+    if(id){
+        const sql = `update cliente set nome = '${nome}', tele = '${tele}' where id = ${id};`;
+        const db = criarConexao();
+        let resultado = { meg: '', sucess: false };
+
+        const promese = consulta(sql, db);
+
+        await promese.then(results => {
+            //console.log(results);
+            console.log('client ' +id+' was updated');
+            resultado.meg = `cliente ${id} atualizado`;
+            resultado.sucess = true;
+        }).catch(erro => {
+            console.log(erro);
+            resultado.meg = `ocoreu um erro ao atualizar cliente`;
+            resultado.sucess = false;
+        })
+        db.end();
+
+        return new Promise(resolve => {
+            resolve(resultado);
+        })
+    }else{
+        return new Promise(resolve => {
+            resolve({ meg: 'id esta como undefined', sucess: false });
+        })
+    }
+}
+
+
 /*
 const dado = getAllCliente();
 dado.then(res => {
@@ -68,4 +99,4 @@ tmp.then(r => {
 */
 
 
-module.exports = { getAllCliente, addClient, removeClient };
+module.exports = { getAllCliente, addClient, removeClient, updateClient };

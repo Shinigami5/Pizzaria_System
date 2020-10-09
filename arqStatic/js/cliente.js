@@ -37,8 +37,31 @@ function AddNewClient(){
 }
 
 function editClient(event){
-    const id = event.target.id;
-    console.log('id: '+ id);
+    const e = event.target.parentElement;
+    const id = e.id;
+    const Ps = e.querySelectorAll('p');
+    let nome = Ps[1].innerText;
+    let tele = Ps[2].innerText;
+
+    nome = nome.replace('nome: ', '');
+    tele = tele.replace('telefone: ', '');
+
+    console.log(nome);
+    console.log(tele);
+
+
+    fetch(`/cliente/edita?nome=${nome}&tele=${tele}&id=${id}`, { method: 'get' }).then(res => {
+        if(res.status === 200){
+            console.log(res);
+            res.text().then(novoHTML => {
+                document.open();
+                document.write(novoHTML);
+            })
+        }else{
+            console.error('erro: requisiçao retorno com status ' + res.status);
+            console.log(res);
+        }
+    })
 }
 
 function deleteClient(event){
