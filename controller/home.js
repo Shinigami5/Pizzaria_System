@@ -19,7 +19,7 @@ exports.get = (req, res) => {
 }
 
 exports.getPedido = (req, res) => {
-    console.log(req.query.data1);
+    //console.log(req.query.data1);
 
     const promise = getDataHomeByDate(req.query.data1, req.query.data2);
     setTimeout(() => {
@@ -27,7 +27,7 @@ exports.getPedido = (req, res) => {
             for (const p of results) {
                 p.data = p.data.toLocaleDateString();
             }
-            console.log(results[0].data);
+            //console.log(results[0].data);
             res.json(results);
         })
     }, 100);

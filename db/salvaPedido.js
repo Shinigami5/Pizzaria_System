@@ -12,7 +12,6 @@ function getIdFromProduto(nome, connec){
         id = res[0].id;
     })
     .catch((erro) => {
-        console.log('deu erro');
         console.log(erro);
     })
 
@@ -31,7 +30,6 @@ function getIDfromClient(nome, connec){
         //console.log('id: ', id);
     })
     .catch((erro) => {
-        console.log('deu erro');
         console.log(erro);
     })
 
@@ -50,7 +48,7 @@ async function inserePedido(obj, connec){
         //console.log(sql);
         const tmp = consulta(sql, connec); //
         tmp.then((r) => {
-            //console.log('ok: ', r);
+            console.log(`new pedido with id ${r.insertId} was add`);
             retorno.id = r.insertId;
         }).catch((erro) => {
             console.log(erro);
@@ -91,7 +89,6 @@ function salvaPedido(pedido){
     
     setTimeout(() => {
         p1.then((id) => {
-            //console.log('line 292: ', id);
             insereItemDePedido(id, pedido.produto, con);
         }).catch((erro) => { 
             console.log(erro);

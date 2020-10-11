@@ -8,7 +8,6 @@ exports.get = (req, res) => {
     setTimeout(() => {
         promise.then((result) => {
             cliente.then((result2) => {
-                console.log('passou pelo then');
                 res.render('addPedido', { produtos: result, clientes: result2 });
             })
             .catch((erro) => {
@@ -16,7 +15,6 @@ exports.get = (req, res) => {
             })
         })
         .catch((erro) => {
-            console.log('passou pelo catch');
             console.log(erro);
             res.render('addPedido', { result: null, clientes: null });
         });
@@ -24,7 +22,7 @@ exports.get = (req, res) => {
 }
 
 exports.post = (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     salvaPedido(req.body);
     res.redirect('./home');
 }

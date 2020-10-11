@@ -16,6 +16,7 @@ const addProduto = async (nome, tipo, price) => {
     const sql = `insert into produto(nome, tipo, preço) value ('${nome}', '${tipo}', '${price}');`;
 
     const productPromise = await consulta(sql, db);
+    console.log(`new product with id ${productPromise.insertId} was add`);
     db.end();
 }
 
@@ -27,7 +28,7 @@ const removeProduto = async (id) => {
     const p = consulta(sql, db);
 
     await p.then(results => {
-        console.log('product', results);
+        console.log('product '+id+' was removed');
         if(results.length === 0){
             //console.log('nenhum pedido possuier esse produto');
             consulta(`delete from produto where id = ${id};`, db);
@@ -59,7 +60,7 @@ const updateProduct = async (id, name, type, price) => {
     const ud = consulta(sql, db);
 
     await ud.then(res => {
-        console.log(res);
+        console.log('product '+id+' was update');
         resultado.meg = `item ${id} atualizado`;
         resultado.sucess = true;
     }).catch(erro => {

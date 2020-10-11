@@ -18,8 +18,6 @@ function criarConexao(){
     }
 }
 
-
-
 async function consulta(sql, connection){
     return new Promise(async function(resolve, reject) {
         await connection.query(sql, function(err, results, op){
@@ -44,7 +42,7 @@ function getPedidosByDate(connection, data1, data2){
     const sqlPedido = 'select ordem_pedido.id, cliente.nome, ordem_pedido.dataPedido, ordem_pedido.done ' +
     'from  cliente ' +
     'inner join ordem_pedido on ordem_pedido.fk_cliente = cliente.id ' +
-    `where ordem_pedido.dataPedido < '${data2}' and ordem_pedido.dataPedido > '${data1}'`;
+    `where ordem_pedido.dataPedido <= '${data2}' and ordem_pedido.dataPedido >= '${data1}'`;
     //console.log(sqlPedido);
     return consulta(sqlPedido, connection);
 }
@@ -138,7 +136,7 @@ function setDone(id, status){
     }
     const proDone = consulta(sql, con);
     proDone.then((results) => {
-        console.log(results.affectedRows);
+        console.log('attribute done of one pedido was changed');
         con.end();
     })
     .catch((error) => { 
@@ -160,7 +158,7 @@ function deletePedido(id){
             pro2.then((res) => {
                 if(res.affectedRows !== 0){
                     con.end();
-                    console.log('item ' + id + ' removido com sucesso');
+                    console.log('item ' + id + ' was removed');
                 }
             })
         }else
@@ -171,7 +169,6 @@ function deletePedido(id){
         console.log(erro);
     })
 }
-
 
 function getProdutos(){
     const con = criarConexao();
@@ -196,8 +193,6 @@ function getProdutos(){
         reject('erro');
     });
 }
-
-
 
 function getCliente(){
     const con = criarConexao();

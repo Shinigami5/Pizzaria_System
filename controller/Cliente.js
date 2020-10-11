@@ -34,12 +34,12 @@ exports.post = (req, res) => {
 
     if( !(tele.length >= 8 && tele.length <= 11) ){
         erro = true;
-        console.log('error: tele deve ter entre 8 a 11 digitos');
+        //console.log('error: tele deve ter entre 8 a 11 digitos');
         res.json({ meg: 'erro: telefone deve ter entre 8 a 11 digitos' });
     }
     if(nome.length > 70){
         erro = true;
-        console.log('error: nome tem tamanho maior de 70');
+        //console.log('error: nome tem tamanho maior de 70');
         res.json({ meg: 'erro: nome é muito longo' });
     }
 

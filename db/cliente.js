@@ -17,6 +17,7 @@ const addClient = async (nome, tele) => {
     const sql = `insert into cliente(nome, tele) value ('${nome}', '${tele}')`;
 
     const addPromise = await consulta(sql, db);
+    console.log(`new Client with id ${addPromise.insertId} was add`);
     db.end();
 }
 
@@ -29,8 +30,8 @@ const removeClient = async (id) => {
 
     await client.then(res => {
         if(res.length === 0){
-            //console.log(`delete from cliente where = ${id}`);
             consulta(`delete from cliente where id = ${id}`, db);
+            console.log(`client ${id} was removed`);
             resultado.meg = `cliente ${id} removido com sucesso`;
             resultado.sucess = true;
         }else{

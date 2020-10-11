@@ -21,12 +21,11 @@ exports.get = (req, res) => {
         console.log(erro);
         res.render('produtos', { 'produtos': null });
     })
-
 }
 
 
 exports.post = (req, res) => {
-    console.log("produto recebido", req.query);
+    //console.log("produto recebido", req.query);
     const nome = req.query.nome;
     const tipo = req.query.tipo;
     const price = req.query['preço'];
@@ -37,9 +36,6 @@ exports.post = (req, res) => {
         addProduto(nome, tipo, price);
         res.json({ meg: 'novo Produto recebido' });
     }
-
-    
-
 }
 
 exports.put = (req, res) => {
@@ -50,12 +46,11 @@ exports.put = (req, res) => {
 
 exports.delete = (req, res) => {
     const id = Number(req.query.id);
-    console.log(id);
 
     if(Number.isInteger(id) && id !== undefined){
         const pro = removeProduto(id);
         pro.then(result => {
-            console.log(result.sucess);
+            //console.log(result.sucess);
             if(result.sucess == true){
                 res.json({ meg: result.meg });
             }else{
@@ -69,14 +64,11 @@ exports.delete = (req, res) => {
 }
 
 exports.editar = (req, res) => {
-    //console.log(req.query);
-    
     const obj =  { name: req.query.nome, type: req.query.tipo, price: req.query.price, id: req.query.id };
     res.render('editaProduto', obj);
 }
 
 exports.update = (req, res) => {
-    console.log('query',  req.query);
     const nome = req.query.nome;
     const tipo = req.query.tipo;
     const price = req.query.price;
