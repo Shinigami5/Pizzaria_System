@@ -70,15 +70,26 @@ async function inserePedido(obj, connec){
 
 
 async function insereItemDePedido(Pedido, produtos, connec){
-    for (let i = 0; i < produtos.length; i++) {            
-        const ProId = getIdFromProduto(produtos[i], connec);
-        await ProId.then(async (idProduto) => {
-            const sql2 = `insert into itemProduto(keyproduto, keyPedido) value (${idProduto[0].id}, ${Pedido.id})`
-            const fazNada = consulta(sql2, connec);
-            fazNada.then().catch((erro) => {
+    if(typeof produtos === 'string'){
+        const proId = getIdFromProduto(produtos, connec);
+        await proId.then(async idProduct => {
+            const sql1 = `insert into itemProduto(keyproduto, keyPedido) value (${idProduct[0].id}, ${Pedido.id})`;
+            const newP = consulta(sql1, connec);
+            newP.then().catch(erro => {
                 console.log(erro);
             })
         })
+    }else{
+        for (let i = 0; i < produtos.length; i++) {            
+            const ProId = getIdFromProduto(produtos[i], connec);
+            await ProId.then(async (idProduto) => {
+                const sql2 = `insert into itemProduto(keyproduto, keyPedido) value (${idProduto[0].id}, ${Pedido.id})`
+                const fazNada = consulta(sql2, connec);
+                fazNada.then().catch((erro) => {
+                    console.log(erro);
+                })
+            })
+        }
     }
     connec.end();
 }
