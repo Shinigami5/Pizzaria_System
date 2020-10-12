@@ -26,10 +26,7 @@
 
 .head button {
     outline: none;
-    color: white;
     margin: 4px 10px 0px;
-    background-color: green;
-    border-color: #05044c;
 }
 
 .head input {
@@ -85,10 +82,8 @@
     height: 50px;
     float: right;
     margin: 4px 10px 0px;
-    background-color: green;
     outline: none;
     font-size: 16px;
-    color: white;
 }
 
 .total p {
