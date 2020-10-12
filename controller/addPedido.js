@@ -23,8 +23,12 @@ exports.get = (req, res) => {
 
 exports.post = (req, res) => {
     //console.log(req.body);
-    salvaPedido(req.body);
-    res.redirect('./home');
+    if(req.body.produto.length === 0){
+        res.redirect('./home');
+    }else{
+        salvaPedido(req.body);
+        res.redirect('./home');
+    }
 }
 
 exports.delete = (req, res) => {

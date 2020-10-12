@@ -157,12 +157,14 @@ function deletePedido(id){
         if(res.affectedRows !== 0){
             pro2.then((res) => {
                 if(res.affectedRows !== 0){
-                    con.end();
-                    console.log('item ' + id + ' was removed');
+                    console.log('pedido ' + id + ' was removed');
                 }
+                con.end();
             })
-        }else
+        }else{
+            console.log('pedido ' + id + ' without products was removed');
             con.end();
+        }
         
     })
     .catch((erro) => {
