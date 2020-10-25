@@ -13,13 +13,14 @@ O sistema permite o cadastro e edição de ordem de pedido, clientes e produtos,
 - “/addPedido”: é nessa pagina onde se preencher os dados para novos pedido, além dos campos normais ser tem um que não é um campo mas funcionar como um, nele tem uma lista de produtos a seres adicionado, depois de escolher um, ter que clicar no botão “add” para o produto ser adicionado, o botão “remove” retira o ultimo produto da lista, ao preencher todos os campos é só clicar em enviar para enviar o novo pedido para o servidor.
 
 ##  o código
--antes de baixar é nesseario ter o node.js e MySQL instalado, depois disso é necessário criar um novo db com as tabelas SQL do sistema(essas tabelas estão em FilesSQL) 
+antes de baixar é nesseario ter o node.js e MySQL instalado, depois disso é necessário criar um novo db com as tabelas SQL do sistema(essas tabelas estão em FilesSQL) 
 
-- para roda o código, primeiro baixe o repositório e execute o comando  “node install” no console para baixar a pasta ‘node_modules’ e as dependências do projeto(express, mysql, ejs).
+- para roda o código, primeiro baixe o repositório e execute o comando  “node install” no console para baixar a pasta ‘node_modules’ e as dependências do projeto(express, drive mysql, ejs).
 
-- depois crie o arquivo ‘database.json’ com as informações do banco de dados, que são host, user, senha, datebase, esse arquivo é utilizado para inicializar a coneçao entre o drive do MySQL e o server.
+- depois crie o arquivo ‘database.json’ com as informações do banco de dados, que são host, user, senha, datebase, esse arquivo é utilizado para inicializar a conexão entre o drive do MySQL e o server.
 
-- depois no banco de dados do MySQL utilizado utilize o comando “SET SQL_SAFE_UPDATES = 0;” esse comando desativara o modo seguro de updates pois algumas ações de exclusão de itens, não funcionaram se ele estiver ativado
+- depois no banco de dados do MySQL utilizado, use o comando “SET SQL_SAFE_UPDATES = 0;” esse comando desativara o modo seguro de updates pois algumas ações de exclusão de itens, não funcionaram se ele estiver ativado
 
-- e por fim a versão atual do MySQL 8.0(caso seu MySQL não seja 8.0 ou superior ignore essa última etapa) utilizar um criptografia x entre as conexões db/app mas o drive do MySQL disponível no NPM não(ele utilizar a antiga), para garantir a conexões é necessário desativa a atual criptografia e utilizar a antiga.
+- e por fim a versão atual do MySQL 8.0(caso seu MySQL não seja 8.0 ou superior ignore essa última etapa) utilizar uma criptografia x entre as conexões db/app mas o drive do MySQL disponível no NPM não(ele utilizar a antiga), para garantir a conexões é necessário desativa a atual criptografia e utilizar a antiga.
+
 - quando eu descobri isso eu utilizei um comando para desativa a altual criptografia mas não me lembro ao certo qual foi, acredito  que foi esse “flush privileges;” pois ele estava no arquivo SQL de teste, mas não tenho certeza, caso não queria arisca rode o código do jeito que esta que ira dar uma mensagem de erro, jogue-a nos Overflow da vidas que acredito que vão informá-lo como resolver. 

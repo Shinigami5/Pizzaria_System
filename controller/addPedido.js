@@ -27,12 +27,14 @@ exports.post = (req, res) => {
         res.redirect('./home');
     }else{
         salvaPedido(req.body);
-        res.redirect('./home');
+        setTimeout(() => {
+            res.redirect('./home');
+        }, 300);
     }
 }
 
 exports.delete = (req, res) => {
     //console.log('executou ' + req.query.id);
     deletePedido(req.query.id);
-    res.send(`item ${req.query.id} deletado com sucesso`);
+    res.json({ meg: `item ${req.query.id} deletado com sucesso` });
 }

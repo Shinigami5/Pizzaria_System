@@ -28,9 +28,8 @@ const removeProduto = async (id) => {
     const p = consulta(sql, db);
 
     await p.then(results => {
-        console.log('product '+id+' was removed');
         if(results.length === 0){
-            //console.log('nenhum pedido possuier esse produto');
+            console.log('product '+id+' was removed');
             consulta(`delete from produto where id = ${id};`, db);
             resultado.meg = `produto ${id} removido com sucesso`;
             resultado.sucess = true;

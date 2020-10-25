@@ -7,9 +7,10 @@ function enviar(event){
     const tipo = e[1].value;
     const price = Number(e[2].value);
 
-    console.log(nome);
-    console.log(tipo);
-    console.log(price);
+    // console.log(nome);
+    // console.log(tipo);
+    // console.log(price);
+
 
     fetch(`/produto?nome=${nome}&tipo=${tipo}&preço=${price}`, { 
         method: 'post', 
@@ -20,12 +21,24 @@ function enviar(event){
         if(res.status === 200){
             res.json().then(res2 => {
                 console.log(res2);
+                $.notify(res2.meg, {
+                    autoHideDelay: 5000,
+                    className: 'success',
+                });
             });
         }else{
             console.error('Status: ', res.status);
+            $.notify('requisiçao retornou com status: ' + res.status, {
+                autoHideDelay: 5000,
+                className: 'error'
+            })
         }
     }).catch(error => {
         console.log('erro: ', error);
+        $.notify('ocorreu um erro na requisiçao', {
+            autoHideDelay: 5000,
+            className: 'error'
+        })
     });
 }
 
@@ -75,14 +88,26 @@ function deleteProduto(event){
             res.json().then(obj => {
                  if(obj.meg){
                     console.log(obj.meg);
+                    $.notify(obj.meg, {
+                        className: 'success',
+                        autoHideDelay: 3000,
+                    })
                     event.target.parentElement.remove();
                 }
                 if(obj.erro){
                     console.log(obj.erro);
+                    $.notify(obj.erro, {
+                        className: 'warn',
+                        autoHideDelay: 3000,
+                    })
                 }
             })
         }else{
             console.log(res);
+            $.notify('ocoreu um erro na requisiçao', {
+                className: 'error',
+                autoHideDelay: 3000
+            })
         }
     })
 }

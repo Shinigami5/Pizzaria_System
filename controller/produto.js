@@ -30,7 +30,9 @@ exports.post = (req, res) => {
     const tipo = req.query.tipo;
     const price = req.query['preço'];
     
-    if(nome === undefined || tipo === undefined || price === undefined){
+    if(nome === undefined || nome.length === 0 
+        || tipo === undefined || tipo.length === 0 
+        || price === undefined){
         res.json({ meg: 'alguns dados estao em banco, por favor envios de novo' });
     }else{
         addProduto(nome, tipo, price);
@@ -41,7 +43,7 @@ exports.post = (req, res) => {
 exports.put = (req, res) => {
     //console.log('recebido: ' + req.query.id + ' ' + req.query.status);
     setDone(req.query.id, req.query.status);
-    res.send('sucess');
+    res.json({ meg: `item ${req.query.id} foi alterado com sucesso` });
 }
 
 exports.delete = (req, res) => {

@@ -8,13 +8,14 @@ body{
 }
 
 .inicio{
-    background-color: rgb(97, 50, 50);
+    background-color: green;
     height: 50px;
     width: 100%;
 }
 
 ul {
     list-style-type: none;
+    padding-left: 0px;
 }
 li {
     float: left;
@@ -29,7 +30,7 @@ li a {
 }
 
 li:hover {
-    background-color: #ff0000;
+    background-color: #0e7a88;
 }
 
 button {

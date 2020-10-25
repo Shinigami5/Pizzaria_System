@@ -46,9 +46,11 @@ function getProdutos(){
 
 function enviar(event){
     event.preventDefault();
-    console.log('this is enviar');
+    //console.log('this is enviar');
     getProdutos();
     document.querySelector('form').submit();
+    $.notify('novo pedido enviado', 'success');
+    
 }
 
 
@@ -57,3 +59,5 @@ if (document.readyState === "loading") {
 } else {
     main();
 }
+
+//export { chooseProduto, catalogoProduto }

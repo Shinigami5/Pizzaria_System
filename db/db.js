@@ -136,7 +136,7 @@ function setDone(id, status){
     }
     const proDone = consulta(sql, con);
     proDone.then((results) => {
-        console.log('attribute done of one pedido was changed');
+        console.log('attribute done of a pedido was changed');
         con.end();
     })
     .catch((error) => { 

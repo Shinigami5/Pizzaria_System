@@ -9,7 +9,7 @@ function updateProduct(){
 
     if(id !== '0'){
         fetch(`produto/atualizar?nome=${name}&tipo=${type}&price=${price}&id=${id}`, { method: 'post' }).then(res => {
-            res.json().then(obj => { console.log(obj); } )
+            res.json().then(obj => { console.log(obj.meg); } )
         })
     }else{
         console.log('sem produto para atualizar');
@@ -26,7 +26,9 @@ function updateClient(){
 
     if(id !== '0'){
         fetch(`cliente/atualizar?nome=${name}&tele=${tele}&id=${id}`, { method: 'post' }).then(res => {
-            res.json().then(obj => { console.log(obj); } )
+            res.json().then(obj => { 
+                console.log(obj.meg);
+            })
         })
     }else{
         console.log('sem cliente para atualizar');

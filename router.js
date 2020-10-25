@@ -4,6 +4,7 @@ const pedido = require('./controller/addPedido');
 const produto = require('./controller/produto');
 const teste = require('./controller/paginaTeste');
 const cliente = require('./controller/Cliente');
+const about = require('./controller/about');
 
 const router = express.Router();
 
@@ -28,6 +29,8 @@ router.get('/produto/edita', produto.editar);
 router.post('/produto/atualizar', produto.update); // atualizar um produto
 
 router.put('/produto/atualiza', produto.put); // edita o estado do produto
+
+router.get('/about', about.get);
 
 router.get('/teste', teste.get);
 router.get('/teste/get', teste.get2);

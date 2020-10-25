@@ -1,0 +1,16 @@
+
+.main {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10px;
+    width: 50%;
+    height: 300px;
+    border: 1px solid #8a181898;
+    background-color: #8a1818;
+    padding: 20px;
+    color: white;
+}
+
+h2 {
+    margin-bottom: 10px;
+}

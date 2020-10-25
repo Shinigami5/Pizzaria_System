@@ -112,7 +112,19 @@ function calTotal(dados){
 function excluirItem(){
     fetch(`./pedido/delete?id=${this.id}`, { method: 'delete' }).then((meg) => {
         destroyBloco(this.id);
-        console.log(meg);
+        if(meg.status === 200){
+            meg.json().then(obj => {
+                $.notify(obj.meg, {
+                    autoHideDelay: 3000,
+                    className: 'success'
+                });
+            })
+        }else{
+            let erro = 'erro no retorno da requisiçao, estatus ' + meg.status;
+            $.notify(erro, 'error', {
+                autoHideDelay: 2000
+            });
+        }
     })
 }
 
@@ -126,8 +138,26 @@ function setFeito(){
     let id = E.parentElement.parentElement.id;
     const p = E.parentElement.querySelector('#pf');
 
-    fetch(`./produto/atualiza?id=${id}&status=${p.innerText.slice(14)}`, {method: 'put' }).then((res) => {
-        console.log(res);
+    fetch(`./produto/atualiza?id=${id}&status=${p.innerText.slice(14)}`, {method: 'put' }).then(res => {
+        //console.log(res);
+        if(res.status === 200){
+            res.json().then(obj => {
+                $.notify(obj.meg, {
+                    autoHideDelay: 3000,
+                    hideDuration: 200,
+                    className: 'success'
+                });
+            })
+        }else{
+            let erro = 'erro no retorno da requisiçao, estatus ' + res.status;
+            $.notify(erro, 'error', {
+                showDuration: 2000,
+                className: 'error'
+            });
+
+        }
+    }).catch(erro => {
+        console.log(erro);
     })
 
     if(p.innerText.slice(14) === 'sim'){
@@ -167,7 +197,7 @@ function getPedidoByDate(){
 
     const promise = fetch(`./home/get?data1=${data1}&data2=${data2}`, {method: 'get'}).then((res) => {
         res.json().then((pedidos) => {
-            console.log(pedidos);
+            //console.log(pedidos);
             for (const x of pedidos) {
                 addBloco(x);
             }
@@ -187,6 +217,19 @@ function main(){
     
     const buttonDate = document.querySelector('#bdata');
     buttonDate.addEventListener('click', getPedidoByDate)
+
+    $.notify.addStyle('styleSys', {
+        html: '<span data-notify-text/>',
+        classes: {
+            base: {
+                'background-color': '#004000',
+                'color': 'white',
+                'padding': '5px',
+                'margin': '20px'
+            }
+        }
+    });
+    
 }
 
 // execute as funçoes aqui
